@@ -1,0 +1,79 @@
+<!-- Taskbar Separators app icon (source for src-tauri/icons; run `just icon`).
+     A separator with move arrows beside the taskbars it divides: a header row, then
+     rows of app tiles split into groups by a thin divider that sits in a different spot
+     on each row, with the top two dividers lit. Matches the DataWorx/NovaMail/Secrets
+     icon family: dark body, soft glow, gradient glyph, hairline edge. Drawn on Apple's
+     macOS icon grid: an 824×824 rounded square inset 100px in a 1024×1024 canvas. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <!-- Violet-tinted charcoal body, lighter at the top. -->
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2A2633"/>
+      <stop offset="1" stop-color="#121016"/>
+    </linearGradient>
+    <!-- Faint violet glow behind the separator. -->
+    <radialGradient id="glow" cx="0.33" cy="0.5" r="0.45">
+      <stop offset="0" stop-color="#A78BFA" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#A78BFA" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Separator colour: lavender into violet. -->
+    <linearGradient id="violet" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#C4B5FD"/>
+      <stop offset="1" stop-color="#7C3AED"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="14" flood-opacity="0.35"/>
+    </filter>
+    <filter id="lift" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <!-- Body, glow, and a hairline top highlight for a slightly raised edge. -->
+  <rect x="100" y="100" width="824" height="824" rx="185" fill="url(#bg)" filter="url(#shadow)"/>
+  <rect x="100" y="100" width="824" height="824" rx="185" fill="url(#glow)"/>
+  <rect x="102" y="102" width="820" height="820" rx="183" fill="none" stroke="#fff" stroke-opacity="0.10" stroke-width="4"/>
+
+  <!-- Nudged up so the separator and taskbars sit on the optical centre. -->
+  <g filter="url(#lift)" transform="translate(0,-18)">
+    <!-- The separator: a tall bar with arrows either side, since it can be dragged. -->
+    <rect x="292" y="338" width="52" height="400" rx="26" fill="url(#violet)"/>
+    <g fill="url(#violet)" stroke="url(#violet)" stroke-width="24" stroke-linejoin="round">
+      <polygon points="252,490 192,538 252,586"/>
+      <polygon points="384,490 444,538 384,586"/>
+    </g>
+
+    <!-- Taskbars: a bright header row, then rows of app tiles divided into groups. -->
+    <rect x="500" y="328" width="304" height="52" rx="26" fill="#FAFAFA"/>
+
+    <g fill="#D4D4D8">
+      <rect x="500" y="420" width="52" height="52" rx="16"/>
+      <rect x="568" y="420" width="52" height="52" rx="16"/>
+      <rect x="670" y="420" width="52" height="52" rx="16"/>
+      <rect x="738" y="420" width="52" height="52" rx="16"/>
+    </g>
+    <rect x="638" y="420" width="16" height="52" rx="8" fill="#C4B5FD"/>
+
+    <g fill="#D4D4D8">
+      <rect x="500" y="512" width="52" height="52" rx="16"/>
+      <rect x="602" y="512" width="52" height="52" rx="16"/>
+      <rect x="670" y="512" width="52" height="52" rx="16"/>
+      <rect x="738" y="512" width="52" height="52" rx="16"/>
+    </g>
+    <rect x="570" y="512" width="16" height="52" rx="8" fill="#A78BFA"/>
+
+    <g fill="#A1A1AA">
+      <rect x="500" y="604" width="52" height="52" rx="16"/>
+      <rect x="568" y="604" width="52" height="52" rx="16"/>
+      <rect x="636" y="604" width="52" height="52" rx="16"/>
+      <rect x="738" y="604" width="52" height="52" rx="16"/>
+    </g>
+    <rect x="706" y="604" width="16" height="52" rx="8" fill="#71717A"/>
+
+    <g fill="#71717A">
+      <rect x="500" y="696" width="52" height="52" rx="16"/>
+      <rect x="602" y="696" width="52" height="52" rx="16"/>
+    </g>
+    <rect x="570" y="696" width="16" height="52" rx="8" fill="#52525B"/>
+  </g>
+</svg>

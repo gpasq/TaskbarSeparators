@@ -216,6 +216,16 @@ fn main() {
     }
     let start_hidden = args.iter().any(|a| a == "--minimized");
 
+    // Give the manager its own app ID. Without one, Windows matches it by .exe path to
+    // any pinned separator (whose shortcut targets this same exe) and shows the manager
+    // inside that separator's button. The ID matches the bundle identifier, which the
+    // installer's Start-menu shortcut uses.
+    unsafe {
+        let _ = windows::Win32::UI::Shell::SetCurrentProcessExplicitAppUserModelID(
+            windows::core::w!("net.pasq.taskbar-separators"),
+        );
+    }
+
     tauri::Builder::default()
         .plugin(tauri_plugin_single_instance::init(|app, _args, _cwd| {
             show_manager(app)

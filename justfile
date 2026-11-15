@@ -26,6 +26,6 @@ release:
 bundle:
     cd src-tauri; cargo tauri build
 
-# Regenerate src-tauri/icons from scripts/make-app-icon.mjs
+# Regenerate src-tauri/icons from assets/icon.svg (renders with headless Edge)
 icon:
-    node scripts/make-app-icon.mjs
+    node scripts/make-icon.mjs
