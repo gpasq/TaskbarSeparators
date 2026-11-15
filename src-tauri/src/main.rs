@@ -302,10 +302,9 @@ fn main() {
             Ok(())
         })
         .on_window_event(|window, event| {
-            // Closing the manager keeps the app (and its separators) running in the tray.
-            if let WindowEvent::CloseRequested { api, .. } = event {
-                api.prevent_close();
-                let _ = window.hide();
+            // Closing the manager quits the whole app (tray icon and live separators too).
+            if let WindowEvent::CloseRequested { .. } = event {
+                window.app_handle().exit(0);
             }
         })
         .invoke_handler(tauri::generate_handler![

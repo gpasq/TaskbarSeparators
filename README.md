@@ -9,7 +9,7 @@ Each separator is a transparent, minimized, off-screen window that has its own A
 - **Move it:** drag it along the taskbar.
 - **Keep it:** right-click it and choose **Pin to taskbar**. The window carries relaunch properties (command, name, icon), so the pinned copy keeps its look after the app exits. Clicking a pinned separator runs `taskbar-separators.exe --separator <id>`, which exits immediately.
 
-The manager window lets you add, remove, restyle and rename separators. **Live** controls whether the app keeps a running button for a separator. You can turn it off once a separator is pinned. Closing the window sends the app to the tray, and **Quit** is in the tray menu. You can also have the app start with Windows.
+The manager window lets you add, remove, restyle and rename separators. **Live** controls whether the app keeps a running button for a separator. You can turn it off once a separator is pinned. Closing the window quits the app: pinned separators stay in the taskbar, and unpinned ones disappear until you open the app again. You can also have the app start with Windows, in which case it starts hidden in the tray (click the tray icon to open the window).
 
 ### Where things are stored
 
