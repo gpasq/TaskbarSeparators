@@ -28,11 +28,15 @@ The icons can't go under AppData: Explorer ignores taskbar relaunch icons from t
 
 ## Build
 
-Requires Rust (MSVC toolchain) and WebView2, which Windows 11 already includes. Node is needed only to regenerate the app icon.
+Requires Rust (MSVC toolchain, with the x64 and ARM64 build tools for installers), Node (for the Tauri CLI and the icon script) and WebView2, which Windows 11 already includes.
 
 ```bash
-just run       # debug build + launch
-just test      # unit tests
-just release   # optimized exe at src-tauri/target/release/
-just bundle    # NSIS installer (needs: cargo install tauri-cli)
+just run         # debug build + launch
+just test        # unit tests
+just install     # build and install for this PC (%LOCALAPPDATA%\Programs) with a Start-menu shortcut
+just installers  # x64 and ARM64 setup.exe installers in dist\
 ```
+
+The Tauri CLI comes from npm (`@tauri-apps/cli`) rather than `cargo install tauri-cli`, because the cargo build needs clang on ARM64 Windows.
+
+The installers are per-user (no admin prompt), add a Start-menu entry and an uninstaller in Settings → Apps, and download WebView2 if it's missing. They aren't code-signed, so SmartScreen will warn on first run.

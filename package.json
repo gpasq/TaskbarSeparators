@@ -1,0 +1,11 @@
+{
+  "name": "taskbar-separators",
+  "private": true,
+  "description": "Build tooling only (the Tauri CLI); the app itself has no npm dependencies.",
+  "scripts": {
+    "tauri": "tauri"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2"
+  }
+}

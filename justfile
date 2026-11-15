@@ -41,9 +41,13 @@ uninstall:
     Remove-ItemProperty 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Run' -Name TaskbarSeparators -ErrorAction SilentlyContinue
     @echo "Uninstalled. Unpin any pinned separators from the taskbar."
 
-# NSIS installer (needs: cargo install tauri-cli --version "^2")
-bundle:
-    cd src-tauri; cargo tauri build
+# Build Windows installers for x64 and ARM64 into dist\ (needs: rustup target add x86_64-pc-windows-msvc aarch64-pc-windows-msvc)
+installers:
+    npm install --no-fund --no-audit --silent
+    npx tauri build --target x86_64-pc-windows-msvc --bundles nsis
+    npx tauri build --target aarch64-pc-windows-msvc --bundles nsis
+    New-Item -ItemType Directory -Force dist | Out-Null; Copy-Item -Force src-tauri/target/*/release/bundle/nsis/*-setup.exe dist
+    Get-ChildItem dist/*-setup.exe | ForEach-Object { '{0}  ({1:N1} MB)' -f $_.FullName, ($_.Length / 1MB) }
 
 # Regenerate src-tauri/icons from assets/icon.svg (renders with headless Edge)
 icon:
