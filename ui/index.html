@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Taskbar Separators</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Taskbar Separators</h1>
+      <p class="sub" id="count">No separators yet</p>
+    </div>
+    <button id="add" class="primary"><span aria-hidden="true">＋</span> Add separator</button>
+  </header>
+
+  <section class="taskbar-preview" aria-label="Preview">
+    <div class="bar" id="bar"></div>
+  </section>
+
+  <main id="list"></main>
+
+  <section class="empty" id="empty" hidden>
+    <p>Add a separator and it appears at the right end of your taskbar.</p>
+  </section>
+
+  <details class="help" open>
+    <summary>Moving and keeping separators</summary>
+    <ol>
+      <li><b>Move:</b> drag a separator along the taskbar like any app button.</li>
+      <li><b>Keep it after restarts:</b> right-click it in the taskbar and choose <b>Pin to taskbar</b>. A pinned separator stays where you put it even when this app isn't running.</li>
+      <li>Once pinned, you can switch off <b>Live</b> below so the app stops showing a running indicator under it. To get rid of a pinned one, right-click it and choose <b>Unpin from taskbar</b>.</li>
+      <li>Changing the look of a pinned separator updates the live button right away; the pinned copy picks up the new look after you unpin and re-pin it.</li>
+    </ol>
+  </details>
+
+  <footer>
+    <label class="switch-row">
+      <input type="checkbox" id="autostart">
+      <span class="switch" aria-hidden="true"></span>
+      Start with Windows (in the tray)
+    </label>
+    <span class="hint">Closing this window keeps separators running. Quit from the tray icon.</span>
+  </footer>
+
+  <div class="toast" id="toast" role="status" hidden></div>
+
+  <template id="card">
+    <article class="card">
+      <div class="thumb"><img alt=""></div>
+      <div class="fields">
+        <div class="row">
+          <input class="name" type="text" maxlength="40" aria-label="Name (shown as the tooltip)">
+          <label class="switch-row small" title="Show a button for it in the taskbar">
+            <input type="checkbox" class="live">
+            <span class="switch" aria-hidden="true"></span>
+            Live
+          </label>
+          <button class="icon-btn remove" title="Remove separator" aria-label="Remove separator">✕</button>
+        </div>
+        <div class="kinds" role="radiogroup" aria-label="Style"></div>
+        <div class="row controls">
+          <div class="swatches"></div>
+          <label class="slider">Thickness <input type="range" class="thickness" min="1" max="6" step="1"></label>
+          <label class="slider">Length <input type="range" class="length" min="20" max="100" step="5"></label>
+        </div>
+      </div>
+    </article>
+  </template>
+
+  <script src="main.js"></script>
+</body>
+</html>
